@@ -22,7 +22,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity {
 	
 	final String TAG = "LightSensorDemo";
-	final String TAG2 = "LightSensorDemo_Error";
+	final String TAG2 = "LightSensorDemo_Error"; 
 	ProgressBar lightMeter;
 	TextView textMax;
 	TextView textReading;
