@@ -111,6 +111,7 @@ public class MainActivity extends Activity {
     
     @Override
     public void onDestroy(){
+    	super.onDestroy();
     	// Closing file stream
     	// This should be done elsewhere (onPause(), onStop()) because onDestroy() is not
     	// 		guaranteed to be called.

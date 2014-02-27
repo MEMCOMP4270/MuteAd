@@ -28,3 +28,19 @@ gen/edu/COMP4270/Memphis/adsilence/BuildConfig.java
 bin/classes/edu/COMP4270/Memphis/adsilence/R$attr.class
 
 gen/edu/COMP4270/Memphis/adsilence/R.java
+
+bin/AdSilence.apk
+
+bin/classes.dex
+
+bin/dexedLibs/android-support-v4-f0c2a6a363255bf6fdbe2e3a2aee939e.jar
+
+bin/res/crunch/drawable-xhdpi/ic_launcher.png
+
+bin/res/crunch/drawable-xxhdpi/ic_launcher.png
+
+bin/resources.ap_
+
+bin/res/crunch/drawable-mdpi/ic_launcher.png
+
+bin/res/crunch/drawable-hdpi/ic_launcher.png
