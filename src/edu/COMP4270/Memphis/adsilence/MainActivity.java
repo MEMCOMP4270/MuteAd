@@ -20,9 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
  
 public class MainActivity extends Activity {
-	
+	//Main Activity
 	final String TAG = "LightSensorDemo";
-	final String TAG2 = "LightSensorDemo_Error"; 
+	final String TAG2 = "LightSensorDemo_Error";
 	ProgressBar lightMeter;
 	TextView textMax;
 	TextView textReading;
@@ -43,7 +43,7 @@ public class MainActivity extends Activity {
         textReading = (TextView)findViewById(R.id.reading);
          
         SensorManager sensorManager
-        = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
+        = (SensorManager)getSystemService(Context.SENSOR_SERVICE); 
         Sensor lightSensor
         = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
       
@@ -96,11 +96,17 @@ public class MainActivity extends Activity {
     			
     			// Use this to simply log sensor data to LogCat
     			String currentReadingStr = String.valueOf(currentReading);
-    			//Log.i(TAG, currentReadingStr);
+    			Log.i(TAG, currentReadingStr);
     			long currentTime = System.currentTimeMillis() - startTime;
     			String elapsedTime = "" + currentTime/1000 + ":" + currentTime%1000;
     			
-    			String output =  "\n" + elapsedTime + ", " + String.valueOf(currentReading);
+    			String output;
+    			if(currentReading == 0){
+    				output =  "\n" + elapsedTime + ", " + String.valueOf(currentReading) + ", Potential Ad detected";
+    			}else{
+    				output =  "\n" + elapsedTime + ", " + String.valueOf(currentReading);
+    			}
+    
     			writeData(output);
     			textReading.setText("Current Reading: " + currentReadingStr);
     			//textReading.setText("Current Reading: " + String.valueOf(currentReading));
@@ -163,7 +169,7 @@ public class MainActivity extends Activity {
     	
     	try {
     		unbufferedOutputStream = new FileOutputStream(dataFile);
-			bufferedOutputStream = new BufferedOutputStream(unbufferedOutputStream);
+			bufferedOutputStream = new BufferedOutputStream(unbufferedOutputStream, 8*8192);
 		} catch (FileNotFoundException e) {
 			Log.e(TAG2, "ERROR: FILE NOT FOUND");
 		}
@@ -192,7 +198,14 @@ public class MainActivity extends Activity {
     	try {
 			out.write(data.getBytes());
 		} catch (IOException e) {
-			Log.e(TAG2, "ERROR: IO EXCEPTION, UNABLE TO WRITE DATA");
+			Log.e(TAG2, "ERROR: IO EXCEPTION, PROBLEM WRITING DATA - ATTEMPTING TO FLUSH BUFFER");
+			try {
+				out.flush();
+			} catch (IOException e1) {
+				Log.e(TAG2, "ERROR: IO EXCEPTION, FAILED TO FLUSH BUFFER");
+			}
 		}
+    	
+    	Log.i(TAG, "WRITE SUCCEEDED");
     }
 }
