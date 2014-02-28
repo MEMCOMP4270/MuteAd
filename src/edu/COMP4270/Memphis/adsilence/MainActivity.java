@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
 	TextView textReading;
 	//File dataFile;
 	File dataDir;
-	FileOutputStream outStream;
+	FileOutputStream outStream; 
 	BufferedOutputStream out;
 	long startTime;
   
