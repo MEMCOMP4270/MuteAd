@@ -1,4 +1,4 @@
-Ad Silence
+MuteAd
 =========
 
 The goal of this project is to collect acoustic and ambient light sensor data 
