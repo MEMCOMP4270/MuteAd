@@ -7,7 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import edu.COMP4270.Memphis.adsilence.R;
+import edu.COMP4270.Memphis.mutead.R;
 import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
